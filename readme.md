@@ -18,9 +18,9 @@ This repo contains **notes, configurations, and automation scripts** that keep m
 
 | Server | Specs | Storage | Services |
 |--------|-------|---------|----------|
-| **🔹 Alpha** | Intel Xeon **E3-1270 v6** (4c/8t) <br> 32GB DDR4 <br> ASRock Rack E3C236D4M-4L | 250GB SATA SSD *(boot)* <br> 2×500GB HDD *(RAID 1 work disk)* <br> 1TB HDD *(ISOs / templates / general storage)* | 🧪 Work projects & experiments <br> 🗄️ Databases for testing |
-| **🔹 Beta** | Intel Core **i5-12400F** (6c/12t) <br> 64GB DDR4 <br> Gigabyte B660 DS3H AX DDR4 <br> Nvidia Quadro P620 | 500GB NVMe SSD *(boot)* <br> 2×16TB Seagate IronWolf Pro *(mass storage)* | 🌐 Cloudflared tunnel <br> 🔐 WireGuard VPN <br> 🎬 Servarr stack <br> 📺 Jellyfin *(GPU passthrough)* <br> 📦 Samba (LXC storage provider) |
-| **🔹 Gamma** | HP DL360 G7 <br> 2× Intel Xeon **X5670** (12c/24t total) <br> 96GB DDR3 | 250GB SSD *(boot)* | ⚡ Non-functional tests (stress, load, spike) <br> 🧪 QA / automation testing |
+| **🔹Alpha** | Intel Xeon **E3-1270 v6** (4c/8t) <br> 32GB DDR4 <br> ASRock Rack E3C236D4M-4L | 250GB SATA SSD *(boot)* <br> 2×500GB HDD *(RAID 1 work disk)* <br> 1TB HDD *(ISOs / templates / general storage)* | 🧪 Work projects & experiments <br> 🗄️ Databases for testing |
+| **🔹Beta** | Intel Core **i5-12400F** (6c/12t) <br> 64GB DDR4 <br> Gigabyte B660 DS3H AX DDR4 <br> Nvidia Quadro P620 | 500GB NVMe SSD *(boot)* <br> 2×16TB Seagate IronWolf Pro *(mass storage)* | 🌐 Cloudflared tunnel <br> 🔐 WireGuard VPN <br> 🎬 Servarr stack <br> 📺 Jellyfin *(GPU passthrough)* <br> 📦 Samba (LXC storage provider) |
+| **🔹Gamma** | HP DL360 G7 <br> 2× Intel Xeon **X5670** (12c/24t total) <br> 96GB DDR3 | 250GB SSD *(boot)* | ⚡ Non-functional tests (stress, load, spike) <br> 🧪 QA / automation testing |
 
 ---
 
@@ -34,6 +34,50 @@ This repo contains **notes, configurations, and automation scripts** that keep m
 - And most importantly → **have fun!** 🎉  
 
 ---
+
+
+## 📊 Homelab Network Diagram
+
+```mermaid
+graph LR
+	Internet -->|ISP| Router[TP-LINK AX53]
+	Router --> Switch[Cisco SG200-50]
+
+	Switch --> Alpha[Alpha Server]
+	Switch --> Beta[Beta Server]
+	Switch --> Gamma[Gamma Server]
+
+	%% Alpha first
+	subgraph Alpha_Services [Alpha Services]
+		WorkProjects[Work Projects & Experiments]
+		TestDB[Databases for Testing]
+		Alpha --> WorkProjects
+		Alpha --> TestDB
+	end
+
+	%% Beta second
+	subgraph Beta_Services [Beta Services]
+		Tunnel[Cloudflared Tunnel]
+		VPN[WireGuard VPN]
+		Servarr[Servarr Stack]
+		Jellyfin["Jellyfin GPU Passthrough"]
+		Samba["Samba LXC Storage Provider"]
+		Beta --> Tunnel
+		Beta --> VPN
+		Beta --> Servarr
+		Beta --> Jellyfin
+		Beta --> Samba
+	end
+
+	%% Gamma third
+	subgraph Gamma_Services [Gamma Services]
+		StressTests[Non-functional Tests]
+		QATesting[QA / Automation Testing]
+		Gamma --> StressTests
+		Gamma --> QATesting
+	end
+
+```
 
 ## 🚀 Roadmap  
 
