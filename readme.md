@@ -19,7 +19,7 @@ This repo contains **notes, configurations, and automation scripts** that keep m
 | Server | Specs | Storage | Services |
 |--------|-------|---------|----------|
 | **🔹Alpha** | Intel Xeon **E3-1270 v6** (4c/8t) <br> 32GB DDR4 <br> ASRock Rack E3C236D4M-4L | 250GB SATA SSD *(boot)* <br> 2×500GB HDD *(RAID 1 work disk)* <br> 1TB HDD *(ISOs / templates / general storage)* | 🧪 Work projects & experiments <br> 🗄️ Databases for testing |
-| **🔹Beta** | Intel Core **i5-12400F** (6c/12t) <br> 64GB DDR4 <br> Gigabyte B660 DS3H AX DDR4 <br> Nvidia Quadro P620 | 500GB NVMe SSD *(boot)* <br> 2×16TB Seagate IronWolf Pro *(mass storage)* | 🌐 Cloudflared tunnel <br> 🔐 WireGuard VPN <br> 🎬 Servarr stack <br> 📺 Jellyfin *(GPU passthrough)* <br> 📦 Samba (LXC storage provider) |
+| **🔹Beta** | Intel Core **i5-12400F** (6c/12t) <br> 64GB DDR4 <br> Gigabyte B660 DS3H AX DDR4 <br> Nvidia Quadro P620 | 1TB NVMe SSD *(boot)* <br> 2×16TB Seagate IronWolf Pro *(mass storage)* | 🌐 Cloudflared tunnel <br> 🔐 WireGuard VPN <br> 🎬 Servarr stack <br> 📺 Jellyfin *(GPU passthrough)* <br> 📦 Samba (LXC storage provider) |
 | **🔹Gamma** | HP DL360 G7 <br> 2× Intel Xeon **X5670** (12c/24t total) <br> 96GB DDR3 | 250GB SSD *(boot)* | ⚡ Non-functional tests (stress, load, spike) <br> 🧪 QA / automation testing |
 
 ---
